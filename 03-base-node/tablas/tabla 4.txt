@@ -1,0 +1,9 @@
+numero 1 (4 * 1) = 4
+numero 2 (4 * 2) = 8
+numero 3 (4 * 3) = 12
+numero 4 (4 * 4) = 16
+numero 5 (4 * 5) = 20
+numero 6 (4 * 6) = 24
+numero 7 (4 * 7) = 28
+numero 8 (4 * 8) = 32
+numero 9 (4 * 9) = 36
