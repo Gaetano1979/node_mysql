@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const PORT = 3000;
+//para subir una app a un server remoto tenfremos que modificar esta variable
+// const PORT = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
 
@@ -26,7 +28,7 @@ app.get('/data', (req, res) => {
     res.send('Hola a Todos en Datas');
 });
 
-app.listen(PORT, () => {
-    console.log(`Escuchando el porto ${PORT}`);
+app.listen(port, () => {
+    console.log(`Escuchando el porto ${port}`);
 
 });
