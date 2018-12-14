@@ -6,15 +6,17 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "copiarHtml": "copyfiles --up 1 src/public/*.html dist",
-        "buid": "tsc && npm run copiarHtml"
+        "build": "tsc && npm run copiarHtml"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
         "copyfiles": "^2.1.0",
-        "express": "^4.16.4"
+        "express": "^4.16.4",
+        "mysql": "github:mysqljs/mysql"
     },
     "devDependencies": {
-        "@types/express": "^4.16.0"
+        "@types/express": "^4.16.0",
+        "@types/mysql": "^2.15.5"
     }
 }
