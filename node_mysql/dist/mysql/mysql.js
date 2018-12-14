@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mysql = require("mysql");
 class MySQL {
@@ -13,6 +13,10 @@ class MySQL {
             database: 'dbmaster'
         });
         this.conectarBD();
+    }
+    // creamos un metodos singleton
+    static get instance() {
+        return this._instance || (this._instance = new this());
     }
     conectarBD() {
         this.conexcion.connect((err) => {

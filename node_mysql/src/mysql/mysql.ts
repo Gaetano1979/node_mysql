@@ -18,9 +18,12 @@ export default class MySQL{
             password:'gaetano1979',
             database:'dbmaster'
         });
-        this.conectarBD();
+        this.conectarBD();      
+        }
 
-        
+        // creamos un metodos singleton
+        public static get instance(){
+            return this._instance || (this._instance=new this());
         }
 
         private conectarBD(){
