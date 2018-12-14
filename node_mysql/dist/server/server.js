@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
+const path = require("path");
 class Server {
     constructor(parametro_port) {
         this.port = parametro_port;
@@ -9,8 +10,13 @@ class Server {
     static init(porto) {
         return new Server(porto);
     }
+    publicFolder() {
+        const publicPath = path.resolve(__dirname, '../public');
+        this.app.use(express.static(publicPath));
+    }
     start(callback) {
         this.app.listen(this.port, callback);
+        this.publicFolder();
     }
 }
 exports.default = Server;
