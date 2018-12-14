@@ -1,5 +1,5 @@
 let getNombre = async() => {
-    return 'Gaetano';
+    return 'Gaetano'
 }
 
 let getNombre1 = () => {
