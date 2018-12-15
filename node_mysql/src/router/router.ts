@@ -55,6 +55,14 @@ router.get('/clientes/:id',(req:Request,res:Response)=>{
     //     mensaje:'Todo Bien en Id',
     //     id:id_params
     // })
-})
+});
+router.post('/cliente',(req:Request,res:Response)=>{
+    const post={nombre:'Giovanna',poder:'Invisibilidad'};
+    const query=`INSERT INTO clientes ${post}`;
+    console.log(query);
+    
+        
+    };
+});
 
 export default router;
