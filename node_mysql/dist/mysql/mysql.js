@@ -18,6 +18,22 @@ class MySQL {
     static get instance() {
         return this._instance || (this._instance = new this());
     }
+    // creamos metodos para las query
+    static ejacuarquery(query, callback) {
+        this.instance.conexcion.query(query, (errori, resultati, fields) => {
+            if (errori) {
+                console.log('Error en la query');
+                console.log(errori);
+                return callback(errori);
+            }
+            if (resultati.length === 0) {
+                callback('Registro no existe');
+            }
+            else {
+                callback(null, resultati);
+            }
+        });
+    }
     conectarBD() {
         this.conexcion.connect((err) => {
             if (err) {

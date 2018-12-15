@@ -26,6 +26,24 @@ export default class MySQL{
             return this._instance || (this._instance=new this());
         }
 
+        // creamos metodos para las query
+        static ejacuarquery(query:string,callback:Function){
+            this.instance.conexcion.query(query,(errori,resultati:Object[],fields)=>{
+                if (errori) {
+                    console.log('Error en la query');
+                    console.log(errori);
+                    return callback(errori);
+                }
+                if (resultati.length===0) {
+                    callback('Registro no existe');
+                }else{
+                    callback(null,resultati)
+
+                }
+
+            })
+        }
+
         private conectarBD(){
             this.conexcion.connect((err:mysql.MysqlError)=>{
                 if(err){

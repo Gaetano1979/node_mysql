@@ -1,19 +1,59 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const mysql_1 = __importDefault(require("../mysql/mysql"));
 const router = express_1.Router();
 router.get('/clientes', (req, res) => {
-    res.json({
-        ok: true,
-        mensaje: 'Todo Bien'
+    const query = `
+    select * from clientes`;
+    mysql_1.default.ejacuarquery(query, (errore, clientes) => {
+        if (errore) {
+            res.status(400).json({
+                ok: false,
+                error: errore
+            });
+        }
+        else {
+            res.json({
+                ok: true,
+                datos: clientes
+            });
+        }
     });
+    // res.json({
+    //     ok:true,
+    //     mensaje:'Todo Bien'
+    // });
 });
 router.get('/clientes/:id', (req, res) => {
     const id_params = req.params.id;
-    res.json({
-        ok: true,
-        mensaje: 'Todo Bien en Id',
-        id: id_params
+    console.log("id_params:", id_params);
+    const escapeid = mysql_1.default.instance.conexcion.escape(id_params);
+    console.log("escapeid:", escapeid);
+    const query = `
+    select * from clientes where idclientes=${escapeid}`;
+    console.log(`query: ${query}`);
+    mysql_1.default.ejacuarquery(query, (errore, cliente) => {
+        if (errore) {
+            res.status(400).json({
+                ok: false,
+                error: errore
+            });
+        }
+        else {
+            res.json({
+                ok: true,
+                datos: cliente
+            });
+        }
     });
+    // res.json({
+    //     ok:true,
+    //     mensaje:'Todo Bien en Id',
+    //     id:id_params
+    // })
 });
 exports.default = router;
