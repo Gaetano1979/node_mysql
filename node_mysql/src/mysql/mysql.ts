@@ -10,6 +10,8 @@ export default class MySQL{
 
     constructor(){
         console.log('Clase Inicializada');
+        
+        
 
         this.conexcion=mysql.createConnection({
             host:'ls-4ced6077d7519bffb5de949e2bae2dcbe3615210.c5s20s1vsvjo.eu-central-1.rds.amazonaws.com',
@@ -18,7 +20,9 @@ export default class MySQL{
             password:'gaetano1979',
             database:'dbmaster'
         });
-        this.conectarBD();      
+        this.conectarBD();  
+        
+            
         }
 
         // creamos un metodos singleton
@@ -37,19 +41,17 @@ export default class MySQL{
                 if (resultati.length===0) {
                     callback('Registro no existe');
                 }else{
-                    callback(null,resultati)
-
+                    callback(null,resultati)  
                 }
-
             })
-        }
+        };
+        
 
         private conectarBD(){
             this.conexcion.connect((err:mysql.MysqlError)=>{
                 if(err){
                     console.log(err.message);
-                    return;
-                    
+                    return;                    
                 }
                 this.conectado=true;
                 console.log('Base de datos AWS on line');

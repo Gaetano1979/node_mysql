@@ -34,6 +34,7 @@ class MySQL {
             }
         });
     }
+    ;
     conectarBD() {
         this.conexcion.connect((err) => {
             if (err) {
